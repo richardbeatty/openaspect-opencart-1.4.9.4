@@ -67,6 +67,8 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_length_class'] = $this->language->get('text_length_class');
 		$this->data['text_opencart'] = $this->language->get('text_opencart');
       	$this->data['text_zone'] = $this->language->get('text_zone');
+      	$this->data['text_giftvoucher'] = $this->language->get('text_giftvoucher');
+      	$this->data['text_giftvoucher_theme'] ="Gift Voucher Theme";
 		
 		$this->data['error_install'] = $this->language->get('error_install');
 		
@@ -92,7 +94,8 @@ class ControllerCommonHeader extends Controller {
 			$this->data['download'] = HTTPS_SERVER . 'index.php?route=catalog/download&token=' . $this->session->data['token'];
 			$this->data['error_log'] = HTTPS_SERVER . 'index.php?route=tool/error_log&token=' . $this->session->data['token'];
 			$this->data['feed'] = HTTPS_SERVER . 'index.php?route=extension/feed&token=' . $this->session->data['token'];			
-			
+			$this->data['gift_voucher'] =  HTTPS_SERVER . 'index.php?route=sale/voucher&token=' . $this->session->data['token'];
+			$this->data['gift_voucher_theme'] =  HTTPS_SERVER . 'index.php?route=sale/voucher_theme&token=' . $this->session->data['token'];
 			$this->data['stores'] = array();
 			
 			$this->load->model('setting/store');
@@ -106,6 +109,7 @@ class ControllerCommonHeader extends Controller {
 				);
 			}
 			
+			$this->data['voucher'] = HTTPS_SERVER . 'index.php?route=localisation/geo_zone&token=' . $this->session->data['token'];
 			$this->data['geo_zone'] = HTTPS_SERVER . 'index.php?route=localisation/geo_zone&token=' . $this->session->data['token'];
 			$this->data['information'] = HTTPS_SERVER . 'index.php?route=catalog/information&token=' . $this->session->data['token'];
 			$this->data['language'] = HTTPS_SERVER . 'index.php?route=localisation/language&token=' . $this->session->data['token'];
