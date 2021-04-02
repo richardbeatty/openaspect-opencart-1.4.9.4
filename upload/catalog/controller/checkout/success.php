@@ -1,7 +1,18 @@
 <?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 class ControllerCheckoutSuccess extends Controller { 
 	public function index() { 
 		if (isset($this->session->data['order_id'])) {
+			$this->session->data['order_id'];
+			$this->load->model('account/voucher');
+			$vouchers = $this->session->data['vouchers']; 
+			foreach($vouchers as $voucher)
+			{
+			$voucher_new_id = $this->model_account_voucher->addVoucher($this->session->data['order_id'], $this->session->data['vouchers']);
+			$this->model_account_voucher->send_voucher_email($voucher_new_id);
+			}
 			$this->cart->clear();
 			
 			unset($this->session->data['shipping_method']);
@@ -12,27 +23,23 @@ class ControllerCheckoutSuccess extends Controller {
 			unset($this->session->data['comment']);
 			unset($this->session->data['order_id']);	
 			unset($this->session->data['coupon']);
+			unset($this->session->data['vouchers']);
+			unset($this->session->data['voucher']);
 		}	
-									   
+		//add voucher here 							   
 		$this->language->load('checkout/success');
-		
 		$this->document->title = $this->language->get('heading_title');
-		
 		$this->document->breadcrumbs = array(); 
-
       	$this->document->breadcrumbs[] = array(
         	'href'      => HTTP_SERVER . 'index.php?route=common/home',
         	'text'      => $this->language->get('text_home'),
         	'separator' => FALSE
       	); 
-
-		
       	$this->document->breadcrumbs[] = array(
         	'href'      => HTTP_SERVER . 'index.php?route=checkout/cart',
         	'text'      => $this->language->get('text_basket'),
         	'separator' => $this->language->get('text_separator')
       	);
-		
 		if ($this->customer->isLogged()) {
 			$this->document->breadcrumbs[] = array(
 				'href'      => HTTP_SERVER . 'index.php?route=checkout/shipping',
@@ -94,5 +101,14 @@ class ControllerCheckoutSuccess extends Controller {
 		
 		$this->response->setOutput($this->render(TRUE), $this->config->get('config_compression'));
   	}
+	  public function mail()
+	  {
+
+		$this->load->model('account/voucher');
+	
+		$this->model_account_voucher->send_voucher_email(121);
+		echo " Mail Sent";
+
+	  }
 }
 ?>
