@@ -67,8 +67,21 @@
           <td align="right" valign="top"><?php echo $product['quantity']; ?></td>
           <td align="right" valign="top"><?php echo $product['price']; ?></td>
           <td align="right" valign="top"><?php echo $product['total']; ?></td>
-        </tr>
+        </tr> 
         <?php } ?>
+        <?php 
+        if(!empty($vouchers)){
+         foreach ($vouchers as $voucher) { ?>
+        <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
+          <tr class="<?php echo $class; ?>">
+            <td align="left" valign="top"><?php echo $voucher['description']; ?></td>
+            <td align="left" valign="top"></td>
+            <td align="right" valign="top"><?php echo $voucher['quantity']; ?></td>
+          <td align="right" valign="top"><?php echo $voucher['amount']; ?></td>
+            <td align="right" valign="top"><?php echo $voucher['amount']; ?></td>
+        <?php } 
+        }
+        ?>
       </table>
       <br />
       <div style="width: 100%; display: inline-block;">
