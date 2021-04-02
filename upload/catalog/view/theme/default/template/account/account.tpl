@@ -16,6 +16,7 @@
       <li><a href="<?php echo str_replace('&', '&amp;', $information); ?>"><?php echo $text_information; ?></a></li>
       <li><a href="<?php echo str_replace('&', '&amp;', $password); ?>"><?php echo $text_password; ?></a></li>
       <li><a href="<?php echo str_replace('&', '&amp;', $address); ?>"><?php echo $text_address; ?></a></li>
+      <li><a href="<?php echo HTTPS_SERVER . 'index.php?route=account/voucher'; ?>"><?php echo "Buy Gift Voucher"; ?></a></li>
     </ul>
     <p><b><?php echo $text_my_orders; ?></b></p>
     <ul>
