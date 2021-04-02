@@ -1,6 +1,7 @@
 <?php
 class ModelTotalTotal extends Model {
 	public function getTotal(&$total_data, &$total, &$taxes) {
+		
 		if ($this->config->get('total_status')) {
 			$this->load->language('total/total');
 		 
@@ -12,6 +13,7 @@ class ModelTotalTotal extends Model {
         		'value'      => max(0,$total),
 				'sort_order' => $this->config->get('total_sort_order')
 			);
+			
 		}
 	}
 }
