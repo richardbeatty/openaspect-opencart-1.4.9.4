@@ -36,7 +36,7 @@
             <a href="<?php echo str_replace('&', '&amp;', $checkout_payment_address); ?>"><?php echo $text_change; ?></a></td>
         </tr>
       </table>
-    </div>
+    </div> 
     <div class="content">
       <table width="100%">
         <tr>
@@ -59,6 +59,15 @@
           <td align="right" valign="top"><?php echo $product['total']; ?></td>
         </tr>
         <?php } ?>
+        <?php foreach ($vouchers as $voucher) { ?>
+      <tr>
+        <td align="left" valign="top"><?php echo $voucher['description']; ?></td>
+        <td align="left" valign="top"></td>
+        <td align="right" valign="top">1</td>
+        <td align="right" valign="top"><?php echo $voucher['amount']; ?></td>
+        <td align="right" valign="top"><?php echo $voucher['amount']; ?></td>
+      </tr>
+      <?php } ?>
       </table>
       <br />
       <div style="width: 100%; display: inline-block;">
