@@ -54,7 +54,9 @@ class ControllerSettingSetting extends Controller {
 		   'image_cart',
 		   'error_filename',
 		   'catalog_limit',
-		   'admin_limit'
+		   'admin_limit',
+		   'voucher_min',
+		   'voucher_max'
 		);
 
 		foreach($errors as $error) {
@@ -242,9 +244,10 @@ class ControllerSettingSetting extends Controller {
 			'config_error_display',
 			'config_error_log',
 			'config_error_filename',
-
+			'config_voucher_min',
+			'config_voucher_max'
 		);
-
+ 
 		# Loop through all settings for the post/config values
 		foreach ($settings as $setting) {
 			if (isset($this->request->post[$setting])) {
@@ -390,6 +393,14 @@ class ControllerSettingSetting extends Controller {
 
 		if (!$this->request->post['config_catalog_limit']) {
 			$this->error['catalog_limit'] = $this->language->get('error_limit');
+		}
+
+		if (!$this->request->post['config_voucher_min']) {
+			$this->error['voucher_min'] = $this->language->get('error_voucher_min');
+		}
+
+		if (!$this->request->post['config_voucher_max']) {
+			$this->error['voucher_max'] = $this->language->get('error_voucher_max');
 		}
 
 		if (!$this->error) {
