@@ -98,6 +98,10 @@ $(document).ready(function() {
         <li><a href="<?php echo $customer_group; ?>"><?php echo $text_customer_group; ?></a></li>
         <li><a href="<?php echo $coupon; ?>"><?php echo $text_coupon; ?></a></li>
         <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+        <li><a href="<?php echo $gift_voucher; ?>"><?php echo $text_giftvoucher ; ?></a></li> 
+        <li><a href="<?php echo $gift_voucher_theme; ?>"><?php echo $text_giftvoucher_theme ; ?></a></li> 
+        
+       
       </ul>
     </li>
     <li id="system"><a class="top"><?php echo $text_system; ?></a>
