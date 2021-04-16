@@ -3,6 +3,7 @@
 $_['heading_title']          = 'Administration';
 
 // Text
+$_['text_giftvoucher']       = 'Gift Vouchers';
 $_['text_backup']            = 'Backup / Restore';
 $_['text_catalog']           = 'Catalog';
 $_['text_category']          = 'Categories';

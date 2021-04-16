@@ -15,8 +15,24 @@
       </tr>
       <?php } ?>
     </table>
-    <br />
-    <?php if ($display_price) { ?>
+    
+    <?php }
+    if($vouchers){ ?>
+    <table cellpadding="2" cellspacing="0" style="width: 100%;">
+      <?php foreach ($vouchers as $voucher) { ?>
+      <tr>
+        <td align="left" valign="top" style="width:1px"><span class="cart_remove" id="remove_<?php echo $voucher['key']; ?>">&nbsp;</span></td><td valign="top" align="right" style="width:1px"><?php echo $voucher['quantity']; ?>&nbsp;x&nbsp;</td>
+        <td align="left" valign="top"><?php echo $voucher['description']; ?></td>
+      </tr>
+      <?php } ?>
+    </table>
+
+    <?php } 
+    if(!$products && !$vouchers) { ?>
+    <div style="text-align: center;"><?php echo $text_empty; ?></div>
+    <?php } ?>
+    
+    <?php if ($display_price && ($products || $vouchers)) { ?>
 	<table cellpadding="0" cellspacing="0" align="right" style="display:inline-block;">
       <?php foreach ($totals as $total) { ?>
       <tr>
@@ -25,11 +41,14 @@
       </tr>
       <?php } ?>
     </table>
-	<?php } ?>
-    <div style="padding-top:5px;text-align:center;clear:both;"><a href="<?php echo $view; ?>"><?php echo $text_view; ?></a> | <a href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a></div>
-    <?php } else { ?>
-    <div style="text-align: center;"><?php echo $text_empty; ?></div>
-    <?php } ?>
+	<?php } 
+  if($products || $vouchers) { ?>
+    <div style="padding-top:5px;text-align:center;clear:both;">
+      <a href="<?php echo $view; ?>"><?php echo $text_view; ?></a> | <a href="<?php echo $checkout; ?>">
+        <?php echo $text_checkout; ?>
+      </a>
+    </div>
+  <?php } ?>
   </div>
   <div class="bottom">&nbsp;</div>
 </div>

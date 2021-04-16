@@ -78,6 +78,8 @@ $_['entry_cart_weight']       = 'Display Weight on Cart Page:<br /><span class="
 $_['entry_review']       	  = 'Allow Reviews:<br /><span class="help">Enable/Disable new review entry and display of existing reviews</span>';
 $_['entry_maintenance']       = 'Maintenance Mode:<br /><span class="help">Prevents customers from browsing your store. They will instead see a maintenance message. If logged in as admin, you will see the store as normal.</span>';
 $_['entry_token_ignore']      = 'Ignore Tokens on these pages:<br /><span class="help">This version of OpenCart has a token system for admin security. Modules that have not been updated for token support yet can be checked to ignore the token check and allow them to work as normal.</span>';
+$_['entry_voucher_min']   	  = 'Voucher Min:<br /><span class="help">Minimum amount a customer can purchase a voucher for.</span>';
+$_['entry_voucher_max']   	  = 'Voucher Max:<br /><span class="help">Maximum amount a customer can purchase a voucher for.</span>';
 
 // Button
 $_['button_add_store']        = 'Create A New Store';
@@ -101,5 +103,7 @@ $_['error_image_cart']        = 'Cart Image Size dimensions required!';
 $_['error_error_filename']    = 'Error Log Filename required!';
 $_['error_required_data']     = 'Required Data has not been entered. Check for field errors!';
 $_['error_limit']       	  = 'Limit required!';
+$_['error_voucher_min']       = 'Voucher Min required!';
+$_['error_voucher_max']       = 'Voucher Max required!';
 
 ?>

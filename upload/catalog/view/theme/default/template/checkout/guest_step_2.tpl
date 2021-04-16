@@ -17,13 +17,21 @@
     <?php if ($coupon_status) { ?>
     <div class="content">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="coupon">
-        <p><?php echo $text_coupon; ?></p>
+        <p><?php echo  $text_coupon; ?></p>
         <div style="text-align: right;"><?php echo $entry_coupon; ?>&nbsp;
         <input type="text" name="coupon" value="<?php echo $coupon; ?>" />
         &nbsp;<a onclick="$('#coupon').submit();" class="button"><span><?php echo $button_coupon; ?></span></a></div>
       </form>
     </div>
     <?php } ?>
+    <div class="content">
+    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="voucher">
+        <p><?php echo"Apply Gift Voucher"; ?></p>
+        <div style="text-align: right;"><?php echo "Voucher"; ?>&nbsp;
+        <input type="text" name="voucher" value="<?php echo $voucher; ?>" />
+        &nbsp;<a onclick="$('#voucher').submit();" class="button"><span><?php echo "Apply Voucher";// $button_voucher; ?></span></a></div>
+      </form>
+      </div>
     <form action="<?php echo str_replace('&', '&amp;', $action); ?>" method="post" enctype="multipart/form-data" id="guest">
       <?php if ($shipping_methods) { ?>
       <b style="margin-bottom: 2px; display: block;"><?php echo $text_shipping_method; ?></b>

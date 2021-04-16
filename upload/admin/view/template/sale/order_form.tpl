@@ -124,6 +124,20 @@
             </tr>
           </tbody>
           <?php } ?>
+          <?php 
+        if(!empty($vouchers)){
+         foreach ($vouchers as $voucher) { ?>
+        <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
+          <tr >
+              <td></td>
+            <td align="left" valign="top"><?php echo $voucher['description']; ?></td>
+            <td align="left" valign="top"></td>
+            <td align="right" valign="top"><?php echo $voucher['quantity']; ?></td>
+          <td align="right" valign="top"><?php echo $voucher['amount']; ?></td>
+            <td align="right" valign="top"><?php echo $voucher['amount']; ?></td>
+        <?php } 
+        }
+        ?>
           <tbody id="totals">
             <?php foreach ($totals as $key => $tot) { ?>
             <tr<?php if($key != (count($totals)-1) && $key != 0) echo ' class="taxes"'; // TU ?>>

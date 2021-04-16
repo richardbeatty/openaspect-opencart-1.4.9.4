@@ -75,6 +75,15 @@
           <td align="right"><?php echo $product['total']; ?></td>
         </tr>
         <?php } ?>
+        <?php if(!empty($vouchers)){  ?>
+        <tr>
+          <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"><?php echo $vouchers['description']; ?></td>
+          <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: left; padding: 7px;"></td>
+          <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;"><?php echo $vouchers['amount']; ?></td>
+          <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;">1</td>
+          <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;"><?php echo $vouchers['amount']; ?></td>
+        </tr>
+        <?php } ?>
         <?php foreach ($totals as $total) { ?>
         <tr style="text-align: right;">
           <td colspan="3">&nbsp;</td>

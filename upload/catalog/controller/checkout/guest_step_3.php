@@ -35,6 +35,21 @@ class ControllerCheckoutGuestStep3 extends Controller {
 		if (!isset($this->session->data['payment_method'])) {
 	  		$this->redirect(HTTPS_SERVER . 'index.php?route=checkout/guest_step_2');
     	}
+
+		// Gift Voucher
+        $this->data['vouchers'] = array();
+		
+        if (!empty($this->session->data['vouchers'])) {
+            foreach ($this->session->data['vouchers'] as $key => $voucher) {
+                $this->data['vouchers'][] = array(
+                    'key' => $key,
+                    'description' => $voucher['description'],
+                    'amount' => $this->currency->format($voucher['amount'], $this->session->data['currency']),
+                    'remove' => '#', //$this->url->link('checkout/cart', 'remove=' . $key)
+                    'quantity' => 1
+                );
+            }
+        }
 		
 		$total_data = array();
 		$total = 0;
@@ -45,10 +60,27 @@ class ControllerCheckoutGuestStep3 extends Controller {
 		$sort_order = array(); 
 		
 		$results = $this->model_checkout_extension->getExtensions('total');
-		
-		foreach ($results as $key => $value) {
-			$sort_order[$key] = $this->config->get($value['key'] . '_sort_order');
-		}
+		$results[] = array(
+            'extension_id' => 9999,
+            'type' => 'total',
+            'key' => 'voucher'
+        );
+
+		$sortOrderArray = [];
+        foreach ($results as $key => $value) {
+
+            if ($value['key'] == 'voucher') {
+                // Make position total before
+                if (isset($sortOrderArray['total']) && $sortOrderArray['total'] > 1) {
+                    $sort_order[$key] = $sortOrderArray['total'] - 1;
+                } else {
+                    $sort_order[$key] = 999;
+                }
+            } else {
+                $sort_order[$key] = $this->config->get($value['key'] . '_sort_order');
+                $sortOrderArray[$value['key']] = $this->config->get($value['key'] . '_sort_order');
+            }
+        }
 		
 		array_multisort($sort_order, SORT_ASC, $results);
 		
@@ -130,7 +162,7 @@ class ControllerCheckoutGuestStep3 extends Controller {
 			$data['shipping_country_id'] = '';
 			$data['shipping_address_format'] = '';
 			$data['shipping_method'] = '';
-		}
+		} 
 		
 		$data['payment_firstname'] = $this->session->data['guest']['firstname'];
 		$data['payment_lastname'] = $this->session->data['guest']['lastname'];	

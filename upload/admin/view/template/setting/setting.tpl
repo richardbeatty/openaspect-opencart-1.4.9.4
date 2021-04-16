@@ -1,11 +1,11 @@
-<?php echo $header; ?>
+<?php echo $header; ?> 
 <?php if ($error_warning) { ?>
 <div class="warning"><?php echo $error_warning; ?></div>
 <?php } ?>
 <?php if ($success) { ?>
 <div class="success"><?php echo $success; ?></div>
 <?php } ?>
-<div class="box">
+<div class="box"> 
   <div class="left"></div>
   <div class="right"></div>
   <div class="heading">
@@ -216,7 +216,7 @@
       <div id="tab_option">
         <table class="form">
           <tr>
-            <td><span class="required">*</span> <?php echo $entry_admin_limit; ?></td>
+            <td><span class="required">*</span> <?php echo $entry_admin_limit;  ?></td>
             <td><input type="text" name="config_admin_limit" value="<?php echo $config_admin_limit; ?>" size="3" />
               <?php if ($error_admin_limit) { ?>
               <span class="error"><?php echo $error_admin_limit; ?></span>
@@ -461,6 +461,22 @@
               <?php echo $text_no; ?>
               <?php } ?></td>
           </tr>
+          <tr>
+            <td><span class="required">*</span> <?php echo $entry_voucher_min; ?></td>
+            <td><input type="text" name="config_voucher_min" value="<?php echo $config_voucher_min; ?>" size="10" />
+              <?php if ($error_voucher_min) { ?>
+              <span class="error"><?php echo $error_voucher_min; ?></span>
+              <?php } ?></td>
+          </tr>
+
+          <tr>
+            <td><span class="required">*</span> <?php echo $entry_voucher_max; ?></td>
+            <td><input type="text" name="config_voucher_max" value="<?php echo $config_voucher_max; ?>" size="10" />
+              <?php if ($error_voucher_max) { ?>
+              <span class="error"><?php echo $error_voucher_max; ?></span>
+              <?php } ?></td>
+          </tr>
+
         </table>
       </div>
       <div id="tab_image">

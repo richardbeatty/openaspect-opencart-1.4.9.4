@@ -1,4 +1,4 @@
-<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
+<?php  echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content">
   <div class="top">
     <div class="left"></div>
@@ -36,6 +36,18 @@
       </form>
     </div>
     <?php } ?>
+    <?php /*Code to add Gift Vouchers */?>
+     
+     <div class="content">
+       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="voucher">
+         <p><?php echo  " Enter Gift Voucher "; ?></p>
+         <div style="text-align: right;"><?php echo "Gift voucher"; ?>&nbsp;
+         <input type="text" name="voucher" value="<?php  echo $voucher; ?>" />
+         &nbsp;<a onclick="$('#voucher').submit();" class="button"><span><?php echo "Apply Gift Voucher"; ?></span></a></div>
+       </form>
+     </div>
+    
+       <?php /*Code to add Gift Vouchers */?>
 	<form action="<?php echo str_replace('&', '&amp;', $action); ?>" method="post" enctype="multipart/form-data" id="payment">
       <?php if ($payment_methods) { ?>
       <b style="margin-bottom: 2px; display: block;"><?php echo $text_payment_method; ?></b>
@@ -57,6 +69,7 @@
         </table>
       </div>
       <?php } ?>
+ 
       <b style="margin-bottom: 2px; display: block;"><?php echo $text_comments; ?></b>
       <div class="content">
         <textarea name="comment" rows="8" style="width: 99%;"><?php echo $comment; ?></textarea>

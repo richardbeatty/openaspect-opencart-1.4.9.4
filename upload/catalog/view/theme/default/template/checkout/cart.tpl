@@ -5,6 +5,7 @@
     <div class="right"></div>
     <div class="center">
       <h1>
+      
         <?php echo $heading_title; ?>
         <?php if ($weight) { ?>
         &nbsp;(<?php echo $weight; ?>)
@@ -30,11 +31,12 @@
 		  <?php } ?>
         </tr>
         <?php $class = 'odd'; ?>
+        
         <?php foreach ($products as $product) { ?>
         <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
         <tr class="<?php echo $class; ?>">
           <td align="center"><input type="checkbox" name="remove[<?php echo $product['key']; ?>]" /></td>
-          <td align="center"><a href="<?php echo str_replace('&', '&amp;', $product['href']); ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></td>
+          <td align="center"><?php if($product['product_id']!=49){ ?><a href="<?php echo str_replace('&', '&amp;', $product['href']); ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a><?php } ?></td>
           <td align="left" valign="top"><a href="<?php echo str_replace('&', '&amp;', $product['href']); ?>"><?php echo $product['name']; ?></a>
             <?php if (!$product['stock']) { ?>
             <span style="color: #FF0000; font-weight: bold;">***</span>
@@ -52,13 +54,28 @@
 		  <?php } ?>
         </tr>
         <?php } ?>
+        <?php  foreach ($vouchers as $voucher) { ?>
+        <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
+        <tr class="<?php echo $class; ?>">
+          <td align="center"><input type="checkbox" name="remove[<?php echo $voucher['key']; ?>]" /></td>
+          <td align="center"></td>
+          <td align="left" valign="top"><?php echo $voucher['description']; ?>
+             </td>
+          <td align="left" valign="top"><?php  // echo $product['model']; ?></td>
+          <td align="right" valign="top"><input type="number" name="quantity[<?php echo $voucher['quantity']; ?>]" value="<?php echo $voucher['quantity']; ?>" size="3" disabled="disabled" style="width:45px;" /></td>
+          <?php if ($display_price) { ?>
+		  <td align="right" valign="top"><?php echo $voucher['amount']; ?></td>
+          <td align="right" valign="top"><?php echo $voucher['amount']; ?></td>
+		  <?php } ?>
+        </tr>
+        <?php }  ?>
       </table>
 	  <?php if ($display_price) { ?>
 	  <div style="width: 100%; display: inline-block;">
         <table style="float: right; display: inline-block;">
           <?php foreach ($totals as $total) { ?>
           <tr>
-            <td align="right"><b><?php echo $total['title']; ?></b></td>
+            <td align="right"><b><?php echo  $total['title']; ?></b></td>
             <td align="right"><?php echo $total['text']; ?></td>
           </tr>
           <?php } ?>
